@@ -1,0 +1,58 @@
+doctype html
+html
+    head
+        block head
+            meta(charset='UTF-8')
+            meta(name='viewport' content='width=device-width, initial-scale=1.0')
+            //- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js 'unsafe-inline' 'unsafe-eval';  media-src *">
+            
+
+
+            //- title Natours | #{tour}
+            //- this is interpolation syntax
+            link( rel='stylesheet' href='/css/style.css')
+            link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+
+            title Natours | #{title}
+            //- every img and favicon or, for css property it get its own get request
+            //- why does the css and img get loaded 
+            //- because of path.join middleware in app
+    body
+        //- ////////////////////////////////////////////////////
+        //- ////////////////     PRACTISE      /////////////////
+        //- ////////////////////////////////////////////////////
+        //- h1= tour 
+        //- //- this kind of code is called buffered code
+        //- h2= user.toUpperCase()
+        //- // h1 The Park Camper (In this type of )
+
+        //- - const x = 9;
+        //- h2= 2 * x
+        //- //- In buffered code semi colon is not allowed
+        //- p This is just some text.
+        //- ////////////////////////////////////////////////////
+        //- ////////////////////////////////////////////////////
+
+        //- ////////////////////////////////////////////////////
+        //- /////////////  Include and Block  //////////////////
+        //- ////////////////////////////////////////////////////
+        //- Includes allow you to insert the contents of one Pug file into another
+        //- You use 'extends' with 'block' because it is within that block(block content) you'll add special content (with your code) specific to a pug file
+
+        // HEADER
+        include _header
+
+        // CONTENT
+        block content 
+            h1 This is a placeholder heading
+
+        // FOOTER
+        include _footer
+
+
+        
+        //- script(src='https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js')
+        //- script(src='/js/mapBox.js')
+        //- script(src='/js/login.js')
+        script(src='https://js.stripe.com/v3/')
+        script(src='/js/bundle.js')
