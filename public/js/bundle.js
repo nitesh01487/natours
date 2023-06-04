@@ -8396,7 +8396,7 @@ var login = /*#__PURE__*/function () {
           _context.next = 3;
           return (0, _axios.default)({
             method: 'POST',
-            url: 'http://127.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
               email: email,
               password: password
@@ -8437,7 +8437,7 @@ var logout = /*#__PURE__*/function () {
           _context2.next = 3;
           return (0, _axios.default)({
             method: 'GET',
-            url: 'http://127.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
           });
         case 3:
           res = _context2.sent;
@@ -8511,7 +8511,10 @@ var updateSettings = /*#__PURE__*/function () {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
-          url = type === 'password' ? 'http://127.0.1:3000/api/v1/users/updateMyPassword' : 'http://127.0.1:3000/api/v1/users/updateMe';
+          url = type === 'password'
+          // ? 'http://127.0.1:3000/api/v1/users/updateMyPassword'
+          // : 'http://127.0.1:3000/api/v1/users/updateMe';
+          ? '/api/v1/users/updateMyPassword' : '/api/v1/users/updateMe';
           _context.next = 4;
           return (0, _axios.default)({
             method: 'PATCH',
@@ -8563,29 +8566,27 @@ var bookTour = /*#__PURE__*/function () {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return (0, _axios.default)("http://127.0.0.1:3000/api/v1/bookings/checkout-session/".concat(tourId));
+          return (0, _axios.default)( // `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
+          "/api/v1/bookings/checkout-session/".concat(tourId));
         case 3:
           session = _context.sent;
-          console.log(session);
-
-          // 2) Create checkout form + charge credit card
-          _context.next = 7;
+          _context.next = 6;
           return stripe.redirectToCheckout({
             sessionId: session.data.session.id
           });
-        case 7:
-          _context.next = 13;
+        case 6:
+          _context.next = 12;
           break;
-        case 9:
-          _context.prev = 9;
+        case 8:
+          _context.prev = 8;
           _context.t0 = _context["catch"](0);
           console.log(_context.t0);
           (0, _alert.showAlert)('error', _context.t0);
-        case 13:
+        case 12:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
   return function bookTour(_x) {
     return _ref.apply(this, arguments);
@@ -8846,7 +8847,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49422" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49367" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
