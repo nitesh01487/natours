@@ -23,18 +23,30 @@ const viewRouter = require('./routes/viewRoutes');
 const app = express();
 // const bodyParser = require('body-parser');
 
+app.enable('trust proxy');
+
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'))
 
 
 // 1 GLOBAL MIDDLEwARES /////////////////////////////
+// Implement CORS
+// app.use(cors());
+// Access-Control-Allow-Origin *
+// api.natours.com, front-end natours.com
+// app.use(cors({
+//   origin: 'https://www.natours.com'
+// }))
+
+// app.options('*', cors());
+// app.options('/api/v1/tours/:id', cors());
 
 // Serving static files
 // app.use(express.static(`${__dirname}/public`));
 app.use(express.static(path.join(__dirname, `public`)));
 
 // Set Security HTTP headers
-app.use(helmet());
+// app.use(helmet().contentSecurityPolicy());
 // Data Sanitization
 // Clean all the data that come from malicious code
 
@@ -54,6 +66,13 @@ const limiter= rateLimit({
   message: 'Too many requests from this IP, please try again in an hour!'
 });
 app.use('/api',limiter); // apply to all api routes
+
+// Stripe webhook, BEFORE body-parser, because stripe needs the body as stream
+// app.post(
+//   '/webhook-checkout',
+//   bodyParser.raw({ type: 'application/json' }),
+//   bookingController.webhookCheckout
+// );
 
 // express.json() is middle ware because it will stay b/w the req and res
 
@@ -107,6 +126,30 @@ app.use(hpp({
 //   next();
 //   // if we will not call the next then our request must not propagate further
 // });
+
+// app.use(compression());
+
+// Sets "Content-Security-Policy: default-src 'self';script-src 'self' example.com;object-src 'none';upgrade-insecure-requests"
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      defaultSrc: ["'self'"],
+      frameSrc: ["'self'", 'https://js.stripe.com/v3/'],
+      imgSrc: ["'self'", 'https://*', 'http://*'],
+      styleSrc: ["'self'", 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css', 'https://*', 'unsafe-inline'],
+      scriptSrc: ["'self'", 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js', 'https://js.stripe.com/v3/', 'unsafe-inline','unsafe-hashes'],
+      objectSrc: ["'self'"],
+      connectSrc: ["'self'", 'ws://*', 'https://*', 'ws://127.0.0.1:*'],
+      upgradeInsecureRequests: [],
+    },
+  })
+);
+
+// app.use(
+//   helmet({
+//     contentSecurityPolicy: false,
+//   })
+// );
 
 // Test Middleware
 app.use((req, res, next) => {
@@ -190,4 +233,3 @@ app.use(globalErrorHandler);
 // 4) SERVERS ///////////////////
 
 module.exports = app;
-

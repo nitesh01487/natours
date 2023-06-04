@@ -30,12 +30,15 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
                     product_data: {
                         name: `${tour.name} Tour`,
                         description: tour.summary, //description here
-                        images: [ `${req.protocol}://${req.get('host')}/img/tours/${tour.imageCover}`],
+                        // images: [
+                        //     `${req.protocol}://${req.get('host')}/img/tours/${tour.imageCover}`
+                        // ],
                     },
                 },
             }
         ]
     })
+    console.log(`${req.protocol}://${req.get('host')}/img/tours/${tour.imageCover}`)
 
     // const session = await stripe.checkout.sessions.create({
     //         payment_method_types: ['card'],

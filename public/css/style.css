@@ -32,7 +32,6 @@
     font-weight: 300;
     font-family: 'Lato', sans-serif;
     color: #777;
-    padding: 3rem;
     min-height: 100vh;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -152,7 +151,7 @@
     line-height: 1;
     -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
-    background-image: -webkit-gradient(
+    /* background-image: -webkit-gradient(
       linear,
       left top,
       right bottom,
@@ -163,7 +162,7 @@
       to bottom right,
       rgba(125, 213, 111, 0.85),
       rgba(40, 180, 135, 0.85)
-    );
+    ); */
   }
   
   .heading-primary {
@@ -337,7 +336,7 @@
   .section-header {
     position: relative;
     height: 38vw;
-    clip-path: polygon(
+    /* clip-path: polygon(
       0 0,
       100% 0,
       100% calc(100% - var(--section-rotate)),
@@ -348,7 +347,7 @@
       100% 0,
       100% calc(100% - var(--section-rotate)),
       0 100%
-    );
+    ); */
   }
   
   .header__hero {
@@ -376,7 +375,7 @@
       to(#28b487)
     );
     background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
-    opacity: 0.85;
+    opacity: 0.05
   }
   
   .heading-box {
@@ -384,8 +383,8 @@
     bottom: 13vw;
     left: 50%;
     top: 35%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    /* -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); */
   }
   .heading-box__group {
     color: #f7f7f7;
@@ -675,7 +674,6 @@
   .reviews__star--inactive {
     fill: #bbb;
   }
-  
   .section-cta {
     margin-top: calc(0px - var(--section-rotate));
     padding: 3rem;
@@ -1101,8 +1099,8 @@
   }
   .card__picture {
     position: relative;
-    -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
-    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
+    /* -webkit-clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%);
+    clip-path: polygon(0 0, 100% 0%, 100% 83%, 0% 98%); */
     height: 22rem;
   }
   .card__picture-overlay {
@@ -1117,7 +1115,7 @@
       to(#28b487)
     );
     background-image: linear-gradient(to right bottom, #7dd56f, #28b487);
-    opacity: 0.7;
+    opacity: 0.1;
   }
   .card__picture-img {
     -o-object-fit: cover;
@@ -1327,3 +1325,5 @@
   .leaflet-control-zoom{
     display: hidden;
   }
+
+  .header__hero-overlay
