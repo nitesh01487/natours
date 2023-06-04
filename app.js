@@ -9,6 +9,7 @@ const hpp = require('hpp');
 // const { get } = require('http');
 const cookieParser = require('cookie-parser');
 // parse the cookie coming from the server
+const compression = require('compression');
 
 
 const AppError = require('./utils/appError');
@@ -150,6 +151,8 @@ app.use(
 //     contentSecurityPolicy: false,
 //   })
 // );
+
+app.use(compression());
 
 // Test Middleware
 app.use((req, res, next) => {

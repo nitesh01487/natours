@@ -61,7 +61,7 @@ exports.resizeTourImages =catchAsync(async (req, res, next) => {
         })
     );
 
-    console.log(req.body)
+    // console.log(req.body)
     next();
 });
 
@@ -69,7 +69,6 @@ exports.aliasTopTours = (req, res, next) => {
     req.query.limit = '5';
     req.query.sort = '-ratingsAverage,price';
     req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
-    console.log('hello from middleware ha ha')
     next();
 };
 

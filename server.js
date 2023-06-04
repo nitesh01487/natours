@@ -82,7 +82,7 @@ const server = app.listen(port, () => {
 process.on('unhandledRejection', err => {
     console.log('UNHANDLED REJECTION! Shutting Down...');
     console.log(err);
-    console.log(err.name, err.message);
+    // console.log(err.name, err.message);
     // we will close the server gracefully i.e, we first make the server to listen all the pending and hanging request to listen and respond and then we will close the server with the help of server.close()
     server.close(() =>{
         process.exit(1); // 0 success // 1 uncaught exception
