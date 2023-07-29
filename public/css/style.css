@@ -92,7 +92,7 @@
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     z-index: 9999;
-    color: #fff;
+    color: grey;
     font-size: 1.8rem;
     font-weight: 400;
     text-align: center;
@@ -1326,4 +1326,4 @@
     display: hidden;
   }
 
-  .header__hero-overlay
+  /* .header__hero-overlay */

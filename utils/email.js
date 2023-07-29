@@ -18,23 +18,23 @@ module.exports = class Email {
   }
 
   newTransport() {
-    if(process.env.NODE_ENV === 'production') {
-      // Sendgrid if use refer the jonas video
-      // return nodemailer.createTransport({
-      //   service: 'SendGrid',
-      //   auth: {
-      //     user: process.env.EMAIL_USERNAME,
-      //     pass: process.env.APP_PASSWORD,
-      //   },
-      // });
-      return nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: process.env.EMAIL_USERNAME,
-          pass: process.env.APP_PASSWORD,
-        },
-      });
-    }
+    // if(process.env.NODE_ENV === 'production') {
+    //   // Sendgrid if use refer the jonas video
+    //   // return nodemailer.createTransport({
+    //   //   service: 'SendGrid',
+    //   //   auth: {
+    //   //     user: process.env.EMAIL_USERNAME,
+    //   //     pass: process.env.APP_PASSWORD,
+    //   //   },
+    //   // });
+    //   return nodemailer.createTransport({
+    //     service: 'gmail',
+    //     auth: {
+    //       user: process.env.EMAIL_USERNAME,
+    //       pass: process.env.APP_PASSWORD,
+    //     },
+    //   });
+    // }
 
     return nodemailer.createTransport({
       service: 'gmail',
@@ -73,7 +73,7 @@ module.exports = class Email {
   }
 
   async sendWelcome() {
-    await this.send('Welcome', 'Welcome to the Natours Family!');
+    await this.send('welcome', 'Welcome to the Natours Family!');
   }
 
   async sendPasswordReset() {
