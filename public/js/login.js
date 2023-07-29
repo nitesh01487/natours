@@ -37,7 +37,7 @@ export const logout = async () => {
         // Reload the page from server by setting true
         // if not set true then it will reload from the webpage
         if(res.data.status === 'success') {
-            location.reload(true);
+            location.assign('/');
         }
     } catch(err) {
         showAlert('error', 'Error logging out! Try again.');
